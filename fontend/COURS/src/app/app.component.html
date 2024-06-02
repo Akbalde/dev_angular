@@ -1,0 +1,130 @@
+
+ <div class="flex flex-wrap">
+  <div class="w-full">
+    <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
+      <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+        <a routerLink="/" class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabs(1)" [ngClass]="{'text-pink-600 bg-white': openTab !== 1, 'text-white bg-pink-600': openTab === 1}">
+<i class="fas fa-space-shuttle text-base mr-1"></i> Home
+        </a>
+      </li>
+      <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+        <a routerLink="/edit_student/:id" class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabs(2)" [ngClass]="{'text-pink-600 bg-white': openTab !== 2, 'text-white bg-pink-600': openTab === 2}">
+<i class="fas fa-cog text-base mr-1"></i> Eudiant
+        </a>
+      </li>
+      <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+        <a routerLink="/add_student" class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal" (click)="toggleTabs(3)" [ngClass]="{'text-pink-600 bg-white': openTab !== 3, 'text-white bg-pink-600': openTab === 3}">
+    <i class="fas fa-briefcase text-base mr-1"></i> Ajouter
+        </a>
+      </li>
+    </ul>
+   
+  </div>
+</div>
+<main class="">
+  <router-outlet></router-outlet>
+</main>
+
+
+
+
+<!-- 
+<section  class=" h-content w-full  bg-gray-500 pb-40 text-gray-900" >
+  <h2 class="text-center font-medium pt-10 pb-3 text-3xl md:text-4xl">MEAN</h2>
+
+ <div class="relative grid grid-cols-1 md:grid-cols-2  justify-around  ">
+ 
+  <form [formGroup]="myForm" (ngSubmit)="enregistrer()"
+  class=" justify-around justify-center items-center max-h-[350px] h-[300px] bg-gray-700 w-[500px]  py-2 px-6 mx-8 sm:px-6  lg:px-8 xl:pl-12">
+   
+  <div class="mx-8 flex bg-green-300 justify-between">  
+        <label for="nom" class="font-semibold ">Nom: </label>
+      <input type="text"
+       formControlName="lastname"
+      class="block ring-1 ring-gray-500 shadow-sm py-2 px-2  placeholder-gray-200 border-gray-800 rounded-md"
+      placeholder="votre nom">
+  </div>
+  <div>
+      <label for="prenom" class="after:content-['*'] after:text-red-600 after:text-lg mb-2 block font-semibold ">Prénom: </label>
+      <input type="text"
+      id="prenom"
+      formControlName="firstname"
+      class="block  ring-1 ring-gray-500 shadow-sm py-2 px-2  placeholder-gray-200 border-gray-300 rounded-md"
+      placeholder="votre prénom">
+  </div>
+  
+  <div>
+      <label  class=" after:content-['*'] after:text-red-600 after:text-lg mb-2 block font-semibold ">Matricule:  </label>
+      <input type="mail"
+      formControlName="matricule"
+      class="block  ring-1 ring-gray-500 shadow-sm py-2 px-2  placeholder-gray-200 border-gray-300 rounded-md"
+      placeholder="votre prénom">
+  </div>
+  <div>
+    <label for="exampleInputtext1" class=" after:content-['*'] after:text-red-600 after:text-lg mb-2 block font-semibold ">Département</label>
+    <select class="block ring-1 ring-gray-500 shadow-sm py-2 px-2 border-gray-300 rounded-md"
+        formControlName="departement">
+         <option *ngFor="let dept of departements" [value]="dept._id" [selected]="dept._id === selectedEtudiant?.departement?._id">
+               {{ dept.name }}
+         </option>
+    </select>
+
+  </div>
+         
+  <button type="submit" class="mt-auto block w-32 h-8 justify-center bg-gray-800 rounded-md py-2 text-sm 
+  font-semibold text-white text-center hover:bg-gray-900"
+  [disabled]="this.myForm.invalid">{{ isEditMode ? 'Modifier' : 'Enregistrer' }}</button>
+
+      
+
+  </form>
+
+  <div class="bg-gray-800  h-content ">
+    <h1 class="text-center text-white my-10 text-2xl upercase
+    px-4">Liste des etudiants</h1>
+    <div class=" mx-auto mt-10 px-5">
+      <div class=" overflow-x-auto rounded-lg">  
+        <table class="">
+            <thead class="bg-gray-50">
+                <tr class="border-b-2  border-slate-600 ">
+                    <th class="text-left text-md font-medium upercase border-r-2 border-slate-400  tracking-wider">#</th>
+                    <th class="text-left text-md font-medium upercase border-r-2 border-slate-400  tracking-wider">Prenom</th>
+                    <th class="text-left text-md font-medium upercase border-r-2 border-slate-400 tracking-wider">Nom</th>
+                    <th class="text-left text-md font-medium upercase border-r-2 border-slate-400 tracking-wider">Matricule</th>
+                    <th class="text-left text-md font-medium upercase border-r-2 border-slate-400 tracking-wider">Département</th>
+                    <th class="text-left text-md font-medium upercase border-r-2 border-slate-400 tracking-wider">Action</th>
+  
+                </tr>
+            </thead>
+  
+            <tbody >
+                <tr *ngFor="let etudiant of etudiants" class="bg-gray-200 ">
+                  <th scope="row">{{etudiant._id}}</th>
+                  <td class="border-l-2 border-slate-400   text-lg
+                  font-medium text-gray-900">{{etudiant.firstname}}</td>
+                  <td class="border-l-2  border-slate-400   text-lg
+                  font-medium text-gray-900">{{etudiant.lastname}}</td>
+                  <td class="border-l-2  border-slate-400   text-lg
+                  font-medium text-gray-900">{{etudiant.matricule}}</td>
+                  <td class="border-l-2  border-slate-400  text-lg
+                  font-medium text-gray-900">{{etudiant.departement.name}}</td>
+                  <td  class="border-l-2 gap-2 border-slate-400   text-lg flex
+                    font-medium text-gray-900">
+                    <button class="mt-auto block w-20  bg-green-500 rounded-md py-2 text-sm  
+                    font-semibold text-black text-center hover:bg-green-900" (click)="modifier(etudiant)" >Modifier</button>
+                    <button  class="mt-auto block  bg-red-500 rounded-md py-2 text-sm 
+                    font-semibold text-black text-center hover:bg-red-900" (click)="supprimer(etudiant)">Supprimer</button>
+                  </td>
+                
+                </tr>
+                
+            </tbody>
+        </table>
+    </div> 
+  
+  </div>
+  </div>
+</div>
+</section>
+
+ -->

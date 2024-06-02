@@ -1,0 +1,65 @@
+<div class="bg-gray-800">
+    <h1 class="text-center text-white my-10 text-2xl upercase
+    px-4">Most spoken langages in the world</h1>
+    <div class="max-w-6xl  mt-10 px-5">
+      <div class="  rounded-lg">  
+        <table class="w-full">
+            <thead class="bg-gray-50">
+                <tr >
+                    <th class="px-6 py-4 text-left text-md font-medium text-gray-800 upercase border-1 border-slate-400  tracking-wider">#</th>
+                    <th class="px-6 py-4 text-left text-md font-medium text-gray-800 upercase border-1 border-slate-400  tracking-wider">Prenom</th>
+                    <th class="px-6 py-4 text-left text-md font-medium text-gray-800 upercase border-1 border-slate-400 tracking-wider">Nom</th>
+                    <th class="px-6 py-4 text-left text-md font-medium text-gray-800 upercase border-1 border-slate-400 tracking-wider">Dat Nais</th>
+                    <th class="px-6 py-4 text-left text-md font-medium text-gray-800 upercase border-1 border-slate-400 tracking-wider">Email</th>
+                    <th class="px-6 py-4 text-left text-md font-medium text-gray-800 upercase border-1 border-slate-400 tracking-wider">Adresse</th>
+                    <th class="px-6 py-4 text-left text-md font-medium text-gray-800 upercase border-1 border-slate-400 tracking-wider">Num tel</th>
+                    <th class="px-6 py-4 text-left text-md font-medium text-gray-800 upercase border-1 border-slate-400 tracking-wider">Action</th>
+
+
+                </tr>
+            </thead>
+
+            <tbody >
+                <tr *ngFor="let student of students" class="bg-white">
+                    <td class="border-1 border-slate-400 px-6 py-4 whitespace-nowrap text-lg
+                    font-medium text-gray-900">{{student.id}}.
+                    </td>
+                    <td class="border-1 border-slate-400 px-6 py-4 whitespace-nowrap text-lg
+                     text-gray-900">{{student.first_name}}
+                    </td>
+                    <td class="border-1 border-slate-400 px-6 py-4 whitespace-nowrap text-lg
+                    text-gray-900">{{student.last_name}}
+                    </td>
+                    <td class="border-1 border-slate-400 px-6 py-4 whitespace-nowrap text-lg
+                     text-gray-900">{{student.date_of_birth}}
+                    </td>
+                    <td class="border-1 border-slate-400 px-6 py-4 whitespace-nowrap text-lg
+                    text-gray-900">{{student.email}}
+                   </td>
+                   <td class="border-1 border-slate-400 px-6 py-4 whitespace-nowrap text-lg
+                   text-gray-900">{{student.address}}
+                  </td>
+                  <td class="border-1 border-slate-400 px-6 py-4 whitespace-nowrap text-lg
+                  text-gray-900">{{student.phone_number}}
+                 </td>
+                 <td class="relative inline-block text-left">
+                    <button (click)="toggleDropdown()" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                      Actions
+                    </button>
+                    <div *ngIf="dropdownOpen" class="absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                      <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                        <a (click)="handleEdit()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer" role="menuitem">Éditer</a>
+                        <a (click)="handleModify(student.id)" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer" role="menuitem">Modifier</a>
+                        <a (click)="handleDelete(student.id)" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer" role="menuitem">Supprimer</a>
+                      </div>
+                    </div>
+                 
+                  
+                </td>
+                </tr>
+            </tbody>
+        </table>
+    </div> 
+
+</div>
+</div>
